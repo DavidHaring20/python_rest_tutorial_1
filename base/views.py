@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Advocate
-from .serializers import AdvocateSerializer
+from .models import Advocate, Company
+from .serializers import AdvocateSerializer, CompanySerializer
 
 # Create your views here.
 
@@ -116,3 +116,9 @@ class AdvocateDetail(APIView):
 
 #         serializer = AdvocateSerializer(advocate, many=False)
 #         return Response(serializer.data)
+
+@api_view(['GET'])
+def company_list(request):
+    companies = Company.objects.all()
+    serializer = CompanySerializer(companies, many=True)
+    return Response(serializer.data)
