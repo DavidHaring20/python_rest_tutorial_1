@@ -7,6 +7,7 @@ from . import views
 
 urlpatterns = [
     path('', views.endpoints),
-    path('advocates/', views.advocate_list),
-    path('advocates/<str:username>', views.advocate_detail)
+    path('advocates/', views.AdvocateList.as_view(), name='advocates'),
+    # path('advocates/<str:username>', views.advocate_detail),
+    path('advocates/<str:username>', views.AdvocateDetail.as_view())
 ]
